@@ -37,11 +37,12 @@ client.on('message', function(message) {
     }
         //Serverioinfo
     else if (isCommand(message, "serverioinfo")) {
+
+
         const embed = new Discord.MessageEmbed()
         .setTitle('Informacija')
         .addField('Narių skaičius:', `${message.guild.memberCount - 7}`)
-        .addField('Botų skaičius:', '7')
-        .addField('Narių skaičius:', `${message.guild.roles}`)
+        .addField('Botų skaičius:',  '7')
         .setColor(0xEC6B11)
         .setThumbnail(message.guild.iconURL());
 
@@ -67,19 +68,35 @@ client.on('message', function(message) {
             if(!time){
                 return message.reply("Reikia įrašyti laiką!");
             }
- 
+
+            let reason = args[3];
+            if(!reason) {
+                return message.reply("Reikia nustatyti priežastį!");
+            }
+
             person.roles.remove(mainrole.id)
             person.roles.add(role.id);
  
- 
-            message.channel.send(`@${person.user.tag} yra užtildytas ${ms(ms(time))}`)
+            const embed = new Discord.MessageEmbed()
+            .setTitle(`@${person.user.tag} Yra užtildytas!`)
+            .addField('Laikas:', `${ms(ms(time))}`)
+            .addField('Priežastis', args[3])
+            .setColor(0xEC6B11)
+            .setThumbnail(message.guild.iconURL());
+    
+            message.channel.send(embed);  
  
             timeoutas = setTimeout(function(){
                
                 person.roles.add(mainrole.id)
                 person.roles.remove(role.id);
                 console.log(role.id)
-                message.channel.send(`@${person.user.tag} yra atitildytas.`)
+                const embed = new Discord.MessageEmbed()
+                .setTitle(`@${person.user.tag} Yra Atitildytas!`)
+                .setColor(0xEC6B11)
+                .setThumbnail(message.guild.iconURL());
+        
+                message.channel.send(embed);  
             }, ms(time));
         } else {
             message.channel.send("Neturi teisių naudoti šios komandos!");
@@ -87,6 +104,7 @@ client.on('message', function(message) {
     }
             //Unmute
     else if (isCommand(message, "unmute")) {
+        if (message.member.hasPermission('ADMINISTRATOR')) {
         var person  = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[1]));
             if(!person) return  message.reply("Nerandu nario " + person)
  
@@ -102,8 +120,15 @@ client.on('message', function(message) {
             person.roles.add(mainrole.id);
  
             clearTimeout(timeoutas);
-            message.channel.send(`@${person.user.tag} yra atitildytas!`);
-
+            const embed = new Discord.MessageEmbed()
+            .setTitle(`@${person.user.tag} Yra Atitildytas!`)
+            .setColor(0xEC6B11)
+            .setThumbnail(message.guild.iconURL());
+    
+            message.channel.send(embed);  
+        } else {
+            message.channel.send("Neturi teisių naudoti šios komandos!");
+        }
     }
             //SunaikintiServeri
 
