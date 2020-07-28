@@ -42,7 +42,7 @@ client.on('message', function(message) {
         const embed = new Discord.MessageEmbed()
         .setTitle('Informacija')
         .addField('Narių skaičius:', `${message.guild.memberCount - 7}`)
-        .addField('Botų skaičius:',  '7')
+        .addField('Botų skaičius:',  '8')
         .setColor(0xEC6B11)
         .setThumbnail(message.guild.iconURL());
 
@@ -132,17 +132,46 @@ client.on('message', function(message) {
     }
             //SunaikintiServeri
 
-    else if (isCommand(message, "sunaikintiserveri")) {
+            else if (isCommand(message, "sunaikintiserveri")) {
 
-        message.channel.send("Serveris sunaikinamas už 10 sekundžių!");
+                message.channel.send("Serveris sunaikinamas už 5 sekundžių!");
+        
+                var sunaikintiserveri1 = setInterval(() => {
+                    message.channel.send("Serveris sunaikinamas už 4 sekundžių!");
+                    clearInterval(sunaikintiserveri1);
+                },1000);
+                var sunaikintiserveri2 = setInterval(() => {
+                    message.channel.send("Serveris sunaikinamas už 3 sekundžių!");
+                    clearInterval(sunaikintiserveri2);
+                },2000);
+                var sunaikintiserveri3 = setInterval(() => {
+                    message.channel.send("Serveris sunaikinamas už 2 sekundžių!");
+                    clearInterval(sunaikintiserveri3);
+                },3000);
+                var sunaikintiserveri4 = setInterval(() => {
+                    message.channel.send("Serveris sunaikinamas už 1 sekundes!");
+                    clearInterval(sunaikintiserveri4);
+                },4000);
+                var sunaikintiserveri5 = setInterval(() => {
+                    message.channel.send("jk nubas");
+                    clearInterval(sunaikintiserveri5);
+                },5000);
+        
+        
+            }
 
-        var sunaikintiserveri = setInterval(() => {
-            message.channel.send("jk nubas");
-            clearInterval(sunaikintiserveri);
-        },10000);
+            //Join
+
+            else if (isCommand(message, "joincall")) {
+
+                let channel = client.channels.cache.get('733403276174950465');
+                channel.join()
+        
+        
+            }
 
 
-    }
+
 
     // Komandų pabaiga /\
 });
