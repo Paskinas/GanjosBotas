@@ -153,7 +153,7 @@ client.on('message', function(message) {
                     clearInterval(sunaikintiserveri4);
                 },4000);
                 var sunaikintiserveri5 = setInterval(() => {
-                    message.channel.send("jk nubas");
+                    message.channel.send("jk nub");
                     clearInterval(sunaikintiserveri5);
                 },5000);
         
@@ -168,6 +168,12 @@ client.on('message', function(message) {
                 channel.join()
         
         
+            }
+                //Sn (Siusti zinute i pletkus)
+            else if (isCommand(message, "sn")) {
+                zinute = args[1];
+                client.channels.cache.get('733645632824279131').send(zinute);
+                console.log('b');
             }
 
 
