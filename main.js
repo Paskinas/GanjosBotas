@@ -171,8 +171,12 @@ client.on('message', function(message) {
             }
                 //Sn (Siusti zinute i pletkus)
             else if (isCommand(message, "sn")) {
-                zinute = args[1];
-                client.channels.cache.get('733645632824279131').send(zinute);
+
+                var response = args.join(' ');
+                
+                response = response.slice(2);
+
+                client.channels.cache.get('733645632824279131').send(response);
                 console.log('b');
             }
 
