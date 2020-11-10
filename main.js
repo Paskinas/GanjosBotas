@@ -86,7 +86,7 @@ client.on('message', function(message) {
     
             message.channel.send(embed);  
  
-            new timeoutas = setTimeout(function(){
+            timeoutas = setTimeout(function(){
                
                 person.roles.add(mainrole.id)
                 person.roles.remove(role.id);
@@ -119,7 +119,6 @@ client.on('message', function(message) {
             person.roles.remove(role.id)
             person.roles.add(mainrole.id);
 
-            clearTimeout(timeoutas);
             const embed = new Discord.MessageEmbed()
             
             .setTitle(`@${person.user.tag} Yra Atitildytas!`)
