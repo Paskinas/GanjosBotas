@@ -55,9 +55,9 @@ client.on('message', function(message) {
             if(!person) return  message.reply("Nerandu nario " + person)
  
             let mainrole = message.guild.roles.cache.find(role => role.name === "Narys");
-            let role = message.guild.roles.cache.find(role => role.name === "Užtildytas");
+            let role = message.guild.roles.cache.find(role => role.name === "Suimtas!");
            
-            if(person.roles.cache.find(r => r.name === "Užtildytas")) {
+            if(person.roles.cache.find(r => r.name === "Suimtas!")) {
                 return message.reply(`@${person.user.tag} jau užtildytas!`);
             }
  
@@ -109,9 +109,9 @@ client.on('message', function(message) {
             if(!person) return  message.reply("Nerandu nario " + person)
  
             let mainrole = message.guild.roles.cache.find(role => role.name === "Narys");
-            let role = message.guild.roles.cache.find(role => role.name === "Užtildytas");
+            let role = message.guild.roles.cache.find(role => role.name === "Suimtas!");
            
-            if(!person.roles.cache.find(r => r.name === "Užtildytas")) {
+            if(!person.roles.cache.find(r => r.name === "Suimtas!")) {
                 return message.reply(`@${person.user.tag} nėra užtildytas!`);
             }
  
